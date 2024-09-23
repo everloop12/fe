@@ -1,0 +1,27 @@
+.pulse-loader {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #4CAF50;
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+  
+  .pulse-loader.error {
+    color: red;
+  }
+  
+  .pulse-loader.success {
+    color: #1890ff;
+  }
+  
+  @keyframes pulse {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  

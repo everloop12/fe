@@ -1,0 +1,63 @@
+.hearts-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px; /* Horizontal spacing between hearts */
+}
+
+.heart-full, .heart-grey {
+    width: 40px;
+    margin: 5px;
+    transition: transform 0.3s ease;
+    animation: none;
+}
+
+.heart-grey {
+    filter: grayscale(100%);
+}
+
+/* Keyframe animation for losing a heart (like Minecraft) */
+@keyframes lose-heart {
+    0% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    25% {
+        transform: scale(1.2) rotate(0deg); /* Scale up and hold */
+    }
+    75% {
+        transform: scale(0.6) rotate(0deg); /* Scale down sharply */
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(0) rotate(0deg); /* Disappear */
+        opacity: 0;
+    }
+}
+
+/* Keyframe animation for gaining a heart (like Minecraft) */
+@keyframes gain-heart {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.4); /* Overshoot scale for a bouncy effect */
+        opacity: 1;
+    }
+    75% {
+        transform: scale(0.9); /* Slight squash for bounce-back effect */
+    }
+    100% {
+        transform: scale(1); /* Return to normal size */
+    }
+}
+
+/* Applying the animations */
+.heart-lose {
+    animation: lose-heart 0.6s ease forwards;
+}
+
+.heart-gain {
+    animation: gain-heart 0.6s ease forwards;
+}

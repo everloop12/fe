@@ -1,0 +1,24 @@
+/* Dashboard.css */
+.hero-section {
+    background: #f8f8f8;
+    padding: 100px 0;
+    transition: all 0.3s ease;
+  }
+  
+  .pricing-section {
+    background: #fff;
+    padding: 50px 0;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  /* Add custom AOS animations if needed */
+  [data-aos="fade-up"] {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  
+  [data-aos="fade-up"].aos-animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  

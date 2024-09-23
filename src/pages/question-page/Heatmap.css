@@ -1,0 +1,122 @@
+/* Default desktop view */
+.heatmap-container {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 10px;
+  transform: scale(0.5); /* Adjust scaling for desktop */
+  transform-origin: top left; /* Make sure scaling happens from the top left corner */
+}
+
+/* Color scale (Shades of Blue) */
+.color-empty {
+  fill: #eeeeee; /* Empty cells - light grey */
+}
+.color-scale-1 {
+  fill: #e0f7fa; /* Very light blue */
+}
+.color-scale-2 {
+  fill: #b2ebf2; /* Light blue */
+}
+.color-scale-3 {
+  fill: #80deea; /* Light-medium blue */
+}
+.color-scale-4 {
+  fill: #4dd0e1; /* Medium blue */
+}
+.color-scale-5 {
+  fill: #26c6da; /* Medium-dark blue */
+}
+.color-scale-6 {
+  fill: #00bcd4; /* Dark blue */
+}
+.color-scale-7 {
+  fill: #00acc1; /* Darker blue */
+}
+.color-scale-8 {
+  fill: #0097a7; /* Even darker blue */
+}
+.color-scale-9 {
+  fill: #00838f; /* Very dark blue */
+}
+.color-scale-10 {
+  fill: #006064; /* Darkest blue */
+}
+
+/* Tooltip styling */
+.react-calendar-heatmap-tooltip {
+  background-color: #000;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* Weekday and month labels */
+.react-calendar-heatmap text {
+  font-size: 8px;
+  fill: #aaa;
+}
+
+/* Stats container styling */
+.heatmap-stats-container {
+  background-color: #f5f5f5; /* Light background for contrast */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for a 3D effect */
+  padding: 20px;
+  margin-left: 30px;
+  width: 200px;
+}
+
+.heatmap-stats {
+  font-size: 14px;
+  line-height: 1.8;
+  color: hsl(200, 80%, 25%); /* Darker blue text for readability */
+  text-align: left;
+}
+
+.heatmap-stats h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #444;
+  text-align: center;
+  font-weight: bold;
+}
+
+.heatmap-stats p {
+  margin: 5px 0;
+}
+
+/* Mobile view adjustments */
+@media (max-width: 768px) {
+  .heatmap-container {
+    transform: scale(1); /* Smaller scaling for mobile view */
+    transform-origin: top left;
+    display: block; /* Stack vertically for smaller screens */
+    padding: 10px;
+    margin-top: 0; /* Remove top margin for mobile */
+  }
+
+  /* Make stats text bigger and centered for mobile */
+  .heatmap-stats-container {
+    width: 100%;
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  .heatmap-stats {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .heatmap-stats h3 {
+    font-size: 18px;
+  }
+
+  .react-calendar-heatmap text {
+    font-size: 10px;
+  }
+}

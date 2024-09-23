@@ -1,0 +1,38 @@
+.global-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    background-attachment: fixed;
+}
+
+/* Background animation for larger screens */
+@keyframes zoomBackground {
+    0%, 100% {
+        background-size: 100%;
+    }
+    50% {
+        background-size: 105%; /* Slight zoom effect */
+    }
+}
+
+/* Apply animation only on larger screens */
+@media (min-width: 769px) {
+    .global-background {
+        animation: zoomBackground 20s ease-in-out infinite;
+    }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .global-background {
+        background-attachment: scroll; /* Remove fixed background on mobile */
+        background-size: cover;        /* Ensure background fits properly */
+        animation: none;               /* Disable animation on mobile */
+    }
+}

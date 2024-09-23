@@ -1,0 +1,30 @@
+[
+    {
+        "id": "question1",
+        "question": "A 60-year-old man is admitted with palpitations to the Emergency Department. An ECG on admission shows a broad complex tachycardia...",
+        "choices": [
+            { "index": 0, "text": "Procainamide", "isCorrect": false },
+            { "index": 1, "text": "Lidocaine", "isCorrect": false },
+            { "index": 2, "text": "Synchronised DC shock", "isCorrect": false },
+            { "index": 3, "text": "Adenosine", "isCorrect": false },
+            { "index": 4, "text": "Verapamil", "isCorrect": true }
+        ],
+        "references": [
+            "Verapamil is contraindicated in patients with broad complex tachycardia as it can precipitate ventricular fibrillation."
+        ]
+    },
+    {
+        "id": "question2",
+        "question": "A 51-year-old female is referred to the haematology clinic with a haemoglobin of 19.2 g/dl. She is a non-smoker. What is the most useful test to establish...",
+        "choices": [
+            { "index": 0, "text": "Bone marrow aspiration", "isCorrect": false },
+            { "index": 1, "text": "Blood film", "isCorrect": false },
+            { "index": 2, "text": "Red cell mass", "isCorrect": false },
+            { "index": 3, "text": "Transferrin saturation", "isCorrect": false },
+            { "index": 4, "text": "JAK2 mutation screen", "isCorrect": true }
+        ],
+        "references": [
+            "The discovery of the JAK2 mutation has made red cell mass a second-line investigation."
+        ]
+    }
+]

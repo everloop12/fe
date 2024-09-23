@@ -1,0 +1,55 @@
+/* Ensure global box-sizing is set */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Global styling for small screens */
+@media (max-width: 768px) {
+  body {
+    width: 100%;
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+  }
+
+  .container {
+    width: 100%;
+    padding: 0 15px;
+  }
+
+  /* Adjust background */
+  .global-background {
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* Sidebar: make sure it collapses or is hidden on mobile */
+  .sidebar {
+    display: none; /* Or use a toggleable menu */
+  }
+
+  /* Adjustments to layout and font sizes */
+  h1, h2, h3, p {
+    font-size: smaller;
+    padding: 5px;
+  }
+
+  .content {
+    width: 100%;
+  }
+  
+  .MuiDrawer-paper {
+    background-color: rgba(47,64,80,255) !important; /* Ensure it applies to all views */
+    color: #ffffff; /* Set text color to white for readability */
+}
+
+
+  /* Fix the width of certain elements that may overflow */
+  .your-class-here {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+}

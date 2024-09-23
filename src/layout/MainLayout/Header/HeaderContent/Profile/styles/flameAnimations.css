@@ -1,0 +1,65 @@
+/* Flame Flickering Glow Effect */
+@keyframes flicker {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px rgba(255, 69, 0, 0.8)) drop-shadow(0 0 12px rgba(255, 165, 0, 0.6));
+  }
+  50% {
+    filter: drop-shadow(0 0 10px rgba(255, 140, 0, 0.7)) drop-shadow(0 0 16px rgba(255, 69, 0, 0.8));
+  }
+}
+
+/* Base class for flame icons with flicker and transition */
+.flame-icon {
+  animation: flicker 0.5s infinite ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Specific styles for each flame state */
+.flame1 {
+  filter: drop-shadow(0 0 6px rgba(255, 165, 0, 0.8));
+}
+
+.flame2 {
+  filter: drop-shadow(0 0 8px rgba(255, 69, 0, 0.8));
+}
+
+.flame3 {
+  filter: drop-shadow(0 0 10px rgba(255, 0, 0, 1));
+}
+
+/* Transition between streak icons */
+@keyframes streakTransition {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.flame-icon-enter {
+  animation: streakTransition 1s ease-in-out forwards;
+}
+
+/* Enhanced Transition Between Flame States */
+@keyframes flameTransition {
+  0% {
+    transform: scale(0.8) rotate(0deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.2) rotate(10deg);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.flame-icon {
+  animation: flicker 2s infinite ease-in-out, flameTransition 0.7s ease-in-out forwards;
+  transition: all 0.5s ease-in-out;
+}

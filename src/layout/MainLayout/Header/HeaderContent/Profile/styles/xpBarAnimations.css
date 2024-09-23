@@ -1,0 +1,115 @@
+/* Flame Icon Container */
+.flame-icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px; /* Fixed width to reserve space for the flame icon */
+    height: 40px; /* Match the height of the XP bar */
+    position: relative;
+}
+
+/* Flame Icon */
+.flame-icon {
+    height: 40px;
+    width: 40px;
+}
+
+/* XP Bar and Level Circle Wrapper */
+.xp-bar-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+/* XP Bar Container */
+.xp-bar-container {
+    border-radius: 10px;
+    border: 3px solid var(--xp-bar-border-color);
+    background-color: #ffffff; /* White background for the box */
+    position: relative;
+    height: 40px; /* Match the height of the level circle */
+    width: 120px; /* Adjust as needed */
+    overflow: hidden; /* Hide overflow for the ripple effect */
+    z-index: 1; /* Ensure it's behind the level circle */
+}
+
+/* XP Bar Fill with Glow and Wave Effect on Width Increase */
+.xp-bar {
+    height: 100%;
+    width: var(--xp-width);
+    background: linear-gradient(270deg, rgba(0, 123, 255, 0.7), rgba(0, 123, 255, 0.9));
+    background-size: 200% 100%;
+    animation: waveEffect 3s ease-in-out infinite;
+    transition: width 0.5s ease-in-out, background 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+    border-radius: 10px;
+    position: relative;
+    z-index: 1; /* Ensure it's behind the level circle */
+}
+
+/* Wave Animation */
+@keyframes waveEffect {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Glow and Wave Transition on Width Increase */
+.xp-bar-grow {
+    animation: xpBarGrowWave 1s ease-in-out forwards;
+}
+
+@keyframes xpBarGrowWave {
+    0% {
+        background: linear-gradient(270deg, rgba(0, 255, 0, 0.2), rgba(0, 255, 0, 0.4));
+        opacity: 0.5;
+    }
+    50% {
+        background: linear-gradient(270deg, rgba(0, 255, 0, 0.4), rgba(0, 255, 0, 0.6));
+        background-size: 200% 100%;
+        background-position: 0% 50%;
+        box-shadow: 0 0 15px rgba(0, 255, 0, 0.5), 0 0 30px rgba(0, 255, 0, 0.7);
+    }
+    80% {
+        background: linear-gradient(270deg, rgba(0, 255, 0, 0.1), rgba(0, 255, 0, 0.2));
+        background-position: 100% 50%;
+        opacity: 0.8;
+    }
+    100% {
+        background: linear-gradient(270deg, rgba(0, 123, 255, 0.7), rgba(0, 123, 255, 0.9));
+        opacity: 0.4;
+        box-shadow: none;
+    }
+}
+
+/* Level Circle */
+.level-circle {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 3px solid var(--level-circle-border-color);
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    position: absolute; /* Make sure the circle is placed above the XP bar */
+    left: -9.5%; /* Position the circle at the start of the XP bar */
+    top: 50%; 
+    transform: translateY(-50%); /* Center the circle vertically */
+    z-index: 2; /* Ensure the circle is above the XP bar */
+}
+
+/* Optional: Add a subtle shadow to the level circle */
+.level-circle {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.level-circle span {
+    color: var(--level-circle-border-color);
+}

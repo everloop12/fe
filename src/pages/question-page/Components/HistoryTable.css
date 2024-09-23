@@ -1,0 +1,50 @@
+.history-page-container {
+    background-color: #f7f9fc;
+    padding: 20px;
+  }
+  
+  .header-section {
+    background-color: #003366;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .header-title {
+    font-weight: bold;
+    color: white;
+  }
+  
+  .search-pagination-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .search-bar {
+    width: 300px;
+  }
+  
+  .pagination-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .pagination-button {
+    background-color: #ff7e5f;
+    color: white;
+  }
+  
+  .pagination-text {
+    margin: 0 10px;
+  }
+  
+  .table-container {
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  

@@ -1,0 +1,14 @@
+/* Add glowing effect */
+.glowing-answer {
+  box-shadow: 0 0 20px rgba(17, 227, 17, 0.8), 0 0 40px rgba(17, 227, 17, 0.6), 0 0 60px rgba(17, 227, 17, 0.4);
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px rgba(17, 227, 17, 0.8), 0 0 40px rgba(17, 227, 17, 0.6), 0 0 60px rgba(17, 227, 17, 0.4);
+  }
+  to {
+    box-shadow: 0 0 25px rgba(17, 227, 17, 0.4), 0 0 50px rgba(17, 227, 17, 0.2), 0 0 75px rgba(17, 227, 17, 0.1);
+  }
+}
