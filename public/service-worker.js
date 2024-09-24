@@ -25,6 +25,12 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
 
+  // Exclude subscriptionStatus from being cached
+  if (url.pathname.includes('/v1/user/subscriptionStatus')) {
+    event.respondWith(fetch(event.request)); // Always fetch from the network
+    return;
+  }
+
   // Handle GET requests (cache-first for getUserData)
   if (event.request.method === 'GET' && url.origin === 'https://medmythica-api-rh5e6.ondigitalocean.app') {
     event.respondWith(
