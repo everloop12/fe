@@ -2,16 +2,19 @@
 /* eslint-disable react/prop-types */
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { Box, Button, CircularProgress, Stack, Switch, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, useMediaQuery } from '@mui/material';
-import { useDispatch } from 'react-redux';
+import { Box, Button, Stack, Switch, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, useMediaQuery } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { initExam, setRevision, setTopics } from 'store/reducers/exam';
 import { useResetSelectCategoriesMutation } from 'store/api/answersApiSlice';
 import { useGetUserQuestionDataQuery } from 'store/api/questionApiSlice';
+import { useGetSubscriptionStatusQuery } from 'store/api/PaymentStatusApiSlice';
 import ConfirmationModal from 'pages/Components/ConfirmationComponent/Confirmation';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import Dot from 'components/@extended/Dot';
 import CustomLoader from '../CustomLoader';
+import moment from 'moment';
+import { selectUser } from 'store/reducers/user';
 
 function createData(id, category, progress, accuracy, correctQs, answeredQs) {
   return { id, category, progress, accuracy, correctQs, answeredQs };
@@ -148,17 +151,28 @@ export default function TopicsTable({ swap }) {
   const [categoryType, setCategoryType] = useState('clinical');
   const isMobile = useMediaQuery('(max-width:600px)'); // Check if the screen width is mobile
 
+  const currentUser = useSelector(selectUser);
+  const { data: subscribed, isLoading, isSuccess } = useGetSubscriptionStatusQuery();
+  const isSubscribed = isSuccess && moment(subscribed?.data?.lastPackageExpiry) > moment();
+
   let processedCategories = [];
-  let newData = [];
   let categories = { ids: [], entities: {} };
 
-  const { data: data, isSuccess, isLoading } = useGetUserQuestionDataQuery();
+  const { data: data, isSuccess: isDataSuccess, isLoading: isDataLoading } = useGetUserQuestionDataQuery();
 
-  if (isSuccess) {
+  if (isDataSuccess) {
     categories = data.categories;
 
-    // Logic to process categories based on clinical/preclinical
+    // Filter categories based on subscription status and clinical/preclinical selection
     Object.values(categories.entities).forEach((category) => {
+      if (isSubscribed && category.name.toLowerCase().includes('trial')) {
+        return; // Hide trial categories for subscribed users
+      }
+      if (!isSubscribed && !category.name.toLowerCase().includes('trial')) {
+        return; // Show only trial categories for non-subscribed users
+      }
+
+      // Filter categories based on clinical/preclinical toggle
       if (categoryType === 'clinical' && !category.name.toLowerCase().includes('preclinical')) {
         const processedData = category.questions.map((question, i) => ({
           ...question,
@@ -175,7 +189,8 @@ export default function TopicsTable({ swap }) {
     });
   }
 
-  newData = processedCategories.map((item) => {
+
+  const newData = processedCategories.map((item) => {
     const answeredQs = item.questions.filter((q) => q.Answer).length;
     const correctlyAnswerdQs = item.questions.filter((q) => (q.Answer?.isCorrect || false) === true).length;
     return createData(
@@ -445,7 +460,7 @@ export default function TopicsTable({ swap }) {
           position: 'relative',
           display: 'block',
           maxWidth: '100%',
-          maxHeight: '330px',
+          maxHeight: '300px',
           '& td, & th': { whiteSpace: 'nowrap' },
         }}
       >
