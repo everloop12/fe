@@ -25,9 +25,9 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
 
-  // Exclude subscriptionStatus from being cached
-  if (url.pathname.includes('/v1/user/subscriptionStatus')) {
-    event.respondWith(fetch(event.request)); // Always fetch from the network
+  // Exclude any authentication-related requests from being cached
+  if (url.pathname.includes('/v1/user/subscriptionStatus') || url.pathname.includes('/v1/auth') || url.pathname.includes('/v1/login')) {
+    event.respondWith(fetch(event.request)); // Always fetch from the network for these requests
     return;
   }
 
