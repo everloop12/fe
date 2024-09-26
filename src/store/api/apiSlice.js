@@ -18,4 +18,4 @@ export const apiSlice = createApi({
 });
 
 
-      //baseUrl: 'https://medmythica-api-rh5e6.ondigitalocean.app/v1/',
+      //baseUrl: 'https://medmythica-api-rh5e6.ondigitalocean.app/v1/',d

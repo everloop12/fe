@@ -5,4 +5,4 @@ const axiosInstance = axios.create({
 });
 export default axiosInstance;
 
-//baseURL: 'https://medmythica-api-rh5e6.ondigitalocean.app/v1/'
+//baseURL: 'https://medmythica-api-rh5e6.ondigitalocean.app/v1/'    //baseURL: 'https://medmythica-api-rh5e6.ondigitalocean.app/v1/'
