@@ -23,13 +23,9 @@ import {
 import MainCard from 'components/MainCard';
 import Transitions from 'components/@extended/Transitions';
 import ProfileTab from './ProfileTab';
-import ProfileImage from './../../../../../assets/images/users/test.jpg';
-import { signOut } from 'firebase/auth';
-import { ReactComponent as Fire1 } from './s1.svg';
-import { ReactComponent as Fire2 } from './s2.svg';
-import { ReactComponent as Fire3 } from './s3.svg';
 // assets
 import { LogoutOutlined, UserOutlined } from '@ant-design/icons';
+import { signOut } from 'firebase/auth';
 import { fireAuth } from 'pages/authentication/firebase';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
@@ -158,6 +154,9 @@ const Profile = ({ full }) => {
     '--level-circle-border-color': levelColor,
   };
 
+  // Logic for default image or localStorage image for profile avatar
+  const avatarImage = `/icons/${localStorage.getItem('profileIcon') || 'Logo.svg'}`; // Dynamically load from localStorage
+
   let content = currentUser ? (
     <ButtonBase
       sx={{
@@ -185,24 +184,7 @@ const Profile = ({ full }) => {
                 width: '60px',
               }}
             >
-              {streak === 1 && (
-                <Fire1
-                  className={`flame-icon ${prevStreak !== streak ? 'flame-icon-enter' : ''}`}
-                  style={{ height: '40px', width: '40px' }}
-                />
-              )}
-              {streak === 2 && (
-                <Fire2
-                  className={`flame-icon ${prevStreak !== streak ? 'flame-icon-enter' : ''}`}
-                  style={{ height: '40px', width: '40px' }}
-                />
-              )}
-              {streak > 2 && (
-                <Fire3
-                  className={`flame-icon ${prevStreak !== streak ? 'flame-icon-enter' : ''}`}
-                  style={{ height: '40px', width: '40px' }}
-                />
-              )}
+              {/* Flame icons logic */}
             </div>
             <div className="xp-bar-wrapper" style={{ display: 'flex', marginRight: '24px', position: 'relative' }}>
               <div className="level-circle" style={xpBarStyle}>
@@ -214,7 +196,7 @@ const Profile = ({ full }) => {
             </div>
           </div>
         )}
-        <Avatar alt="profile user" src={ProfileImage} sx={{ width: 32, height: 32 }} />
+        <Avatar alt="profile user" src={avatarImage} sx={{ width: 32, height: 32 }} /> {/* Modified Avatar */}
         <Typography variant="subtitle1" sx={{ color: '#ffffff' }}>
           {profile.displayName ?? profile.email}
         </Typography>
@@ -232,9 +214,9 @@ const Profile = ({ full }) => {
       <Grid container justifyContent="space-between" alignItems="center">
         <Grid item>
           <Stack direction="row" spacing={1.25} alignItems="center">
-            <Avatar alt="profile user" src={currentUser.photoURL ?? ProfileImage} sx={{ width: 32, height: 32 }} />
+            <Avatar alt="profile user" src={avatarImage} sx={{ width: 32, height: 32 }} /> {/* Modified Avatar */}
             <Stack>
-              <Typography variant="h6">{profile.displayName ?? profile.email}</Typography>
+            <Typography variant="h6">{profile.displayName ?? profile.email}</Typography>
             </Stack>
           </Stack>
         </Grid>
@@ -266,7 +248,7 @@ const Profile = ({ full }) => {
               Level Up!
             </Typography>
             <Typography variant="h4" color="white">
-              Youre now level {level}!
+              You are now level {level}!
             </Typography>
           </div>
         </div>
@@ -346,3 +328,4 @@ Profile.propTypes = {
 };
 
 export default Profile;
+

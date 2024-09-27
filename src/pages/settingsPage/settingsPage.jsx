@@ -10,6 +10,9 @@ import { selectUser, setSettings } from 'store/reducers/user';
 import { dispatch } from 'store/index';
 import { deleteUser } from 'firebase/auth';
 
+// Import ThemePicker component
+import ThemePicker from './ThemePicker';
+
 // Full-screen API function
 const toggleFullScreen = () => {
   if (!document.fullscreenElement) {
@@ -94,11 +97,18 @@ const SettingsPage = () => {
         <Typography variant="h4" sx={{ marginBottom: '2rem', fontWeight: 'bold', textAlign: 'center' }}>
           Settings
         </Typography>
-  
+
         <Grid container spacing={4}>
           {/* Anonymous Mode */}
           <Grid item xs={12}>
-            <Box sx={{ padding: '1.5rem', backgroundColor: '#f5f5f5', borderRadius: '8px', boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.05)' }}>
+            <Box
+              sx={{
+                padding: '1.5rem',
+                backgroundColor: '#f5f5f5',
+                borderRadius: '8px',
+                boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.05)'
+              }}
+            >
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <Box>
                   <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
@@ -116,10 +126,17 @@ const SettingsPage = () => {
               </Box>
             </Box>
           </Grid>
-  
+
           {/* Focus Mode */}
           <Grid item xs={12}>
-            <Box sx={{ padding: '1.5rem', backgroundColor: '#f5f5f5', borderRadius: '8px', boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.05)' }}>
+            <Box
+              sx={{
+                padding: '1.5rem',
+                backgroundColor: '#f5f5f5',
+                borderRadius: '8px',
+                boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.05)'
+              }}
+            >
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <Box>
                   <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
@@ -137,10 +154,17 @@ const SettingsPage = () => {
               </Box>
             </Box>
           </Grid>
-  
+
           {/* Zen Full Focus Mode */}
           <Grid item xs={12}>
-            <Box sx={{ padding: '1.5rem', backgroundColor: '#f5f5f5', borderRadius: '8px', boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.05)' }}>
+            <Box
+              sx={{
+                padding: '1.5rem',
+                backgroundColor: '#f5f5f5',
+                borderRadius: '8px',
+                boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.05)'
+              }}
+            >
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <Box>
                   <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
@@ -158,14 +182,29 @@ const SettingsPage = () => {
               </Box>
             </Box>
           </Grid>
-  
+
+          {/* Theme Picker Section */}
+          <Grid item xs={12}>
+            <Typography variant="h5" sx={{ fontWeight: 'bold', marginBottom: '1rem' }}>
+              Theme Selection
+            </Typography>
+            <ThemePicker /> {/* Include the ThemePicker component */}
+          </Grid>
+
           {/* Additional Options */}
           <Grid item xs={12}>
             <Typography variant="h5" sx={{ fontWeight: 'bold', marginBottom: '1rem' }}>
               Additional Options
             </Typography>
-  
-            <Box sx={{ padding: '1.5rem', backgroundColor: '#f5f5f5', borderRadius: '8px', boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.05)' }}>
+
+            <Box
+              sx={{
+                padding: '1.5rem',
+                backgroundColor: '#f5f5f5',
+                borderRadius: '8px',
+                boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.05)'
+              }}
+            >
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <Box>
                   <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
@@ -181,32 +220,7 @@ const SettingsPage = () => {
               </Box>
             </Box>
           </Grid>
-  
-          {/* Conditionally render mode buttons based on the focus state */}
-          {!focus && (
-            <Grid item xs={12}>
-              <Typography variant="h5" sx={{ fontWeight: 'bold', marginBottom: '1rem' }}>
-                Mode Options
-              </Typography>
-              <Box sx={{ padding: '1.5rem', backgroundColor: '#f5f5f5', borderRadius: '8px', boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.05)' }}>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  {/* Life Drain Mode */}
-                  <Button variant="outlined" color="info">
-                    Life Drain Mode
-                  </Button>
-                  {/* Pomodoro Mode */}
-                  <Button variant="outlined" color="primary">
-                    Pomodoro Mode
-                  </Button>
-                  {/* Survival Mode */}
-                  <Button variant="outlined" color="secondary">
-                    Survival Mode
-                  </Button>
-                </Box>
-              </Box>
-            </Grid>
-          )}
-  
+
           {/* Save Settings Button */}
           <Grid item xs={12} sx={{ textAlign: 'center' }}>
             <Button
@@ -220,12 +234,12 @@ const SettingsPage = () => {
             {error && <Typography sx={{ color: 'red', marginTop: '1rem' }}>An error occurred while saving. Please try again.</Typography>}
           </Grid>
         </Grid>
-  
+
         <ConfirmationModal show={showConfirmation} setShow={setShowConfirmation} variant="danger" onConfirm={handleDeleteUser}>
           You are about to delete your account, this action is irreversible.
         </ConfirmationModal>
       </Box>
     </Box>
   );
-}
-export default SettingsPage  
+};
+export default SettingsPage;
