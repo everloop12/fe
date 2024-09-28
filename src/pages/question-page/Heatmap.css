@@ -9,7 +9,7 @@
   transform-origin: top left; /* Make sure scaling happens from the top left corner */
 }
 
-/* Color scale (Shades of Blue) */
+/* Color scale (Shades of Blue) - Default */
 .color-empty {
   fill: #eeeeee; /* Empty cells - light grey */
 }
@@ -44,6 +44,147 @@
   fill: #006064; /* Darkest blue */
 }
 
+/* Light Theme (Shades of Yellow) */
+.light-theme .color-empty {
+  fill: #b3b4ae; /* Very light yellow */
+}
+.light-theme .color-scale-1 {
+  fill: #fff9c4; /* Light yellow */
+}
+.light-theme .color-scale-2 {
+  fill: #fff59d; /* Medium-light yellow */
+}
+.light-theme .color-scale-3 {
+  fill: #fff176; /* Medium yellow */
+}
+.light-theme .color-scale-4 {
+  fill: #ffee58; /* Medium-dark yellow */
+}
+.light-theme .color-scale-5 {
+  fill: #ffeb3b; /* Dark yellow */
+}
+.light-theme .color-scale-6 {
+  fill: #fdd835; /* Darker yellow */
+}
+.light-theme .color-scale-7 {
+  fill: #fbc02d; /* Even darker yellow */
+}
+.light-theme .color-scale-8 {
+  fill: #f9a825; /* Darkest yellow */
+}
+.light-theme .color-scale-9 {
+  fill: #f57f17; /* Very dark yellow */
+}
+.light-theme .color-scale-10 {
+  fill: #ffeb3b; /* Deepest yellow */
+}
+
+/* Dark Theme (Shades of Green) */
+.dark-theme .color-empty {
+  fill: #b5f0cb; /* Dark grey-green for empty cells */
+}
+.dark-theme .color-scale-1 {
+  fill: #b8e7bc; /* Light green */
+}
+.dark-theme .color-scale-2 {
+  fill: #c8e6c9; /* Medium-light green */
+}
+.dark-theme .color-scale-3 {
+  fill: #a5d6a7; /* Medium green */
+}
+.dark-theme .color-scale-4 {
+  fill: #81c784; /* Medium-dark green */
+}
+.dark-theme .color-scale-5 {
+  fill: #66bb6a; /* Dark green */
+}
+.dark-theme .color-scale-6 {
+  fill: #4caf50; /* Darker green */
+}
+.dark-theme .color-scale-7 {
+  fill: #43a047; /* Even darker green */
+}
+.dark-theme .color-scale-8 {
+  fill: #388e3c; /* Darkest green */
+}
+.dark-theme .color-scale-9 {
+  fill: #2e7d32; /* Very dark green */
+}
+.dark-theme .color-scale-10 {
+  fill: #1b5e20; /* Deepest green */
+}
+
+/* Ocean Theme (Shades of Orange) */
+.ocean-theme .color-empty {
+  fill: #fff3e0; /* Very light orange */
+}
+.ocean-theme .color-scale-1 {
+  fill: #ffe0b2; /* Light orange */
+}
+.ocean-theme .color-scale-2 {
+  fill: #ffcc80; /* Medium-light orange */
+}
+.ocean-theme .color-scale-3 {
+  fill: #ffb74d; /* Medium orange */
+}
+.ocean-theme .color-scale-4 {
+  fill: #ffa726; /* Medium-dark orange */
+}
+.ocean-theme .color-scale-5 {
+  fill: #ff9800; /* Dark orange */
+}
+.ocean-theme .color-scale-6 {
+  fill: #fb8c00; /* Darker orange */
+}
+.ocean-theme .color-scale-7 {
+  fill: #f57c00; /* Even darker orange */
+}
+.ocean-theme .color-scale-8 {
+  fill: #ef6c00; /* Darkest orange */
+}
+.ocean-theme .color-scale-9 {
+  fill: #e65100; /* Very dark orange */
+}
+.ocean-theme .color-scale-10 {
+  fill: #bf360c; /* Deepest orange */
+}
+
+/* Space Theme (Shades of Pink and Purple) */
+.space-theme .color-empty {
+  fill: #fce4ec; /* Very light pink */
+}
+.space-theme .color-scale-1 {
+  fill: #f8bbd0; /* Light pink */
+}
+.space-theme .color-scale-2 {
+  fill: #f48fb1; /* Medium-light pink */
+}
+.space-theme .color-scale-3 {
+  fill: #f06292; /* Medium pink */
+}
+.space-theme .color-scale-4 {
+  fill: #ec407a; /* Medium-dark pink */
+}
+.space-theme .color-scale-5 {
+  fill: #e91e63; /* Dark pink */
+}
+.space-theme .color-scale-6 {
+  fill: #d81b60; /* Darker pink */
+}
+.space-theme .color-scale-7 {
+  fill: #c2185b; /* Even darker pink */
+}
+.space-theme .color-scale-8 {
+  fill: #ad1457; /* Darkest pink */
+}
+.space-theme .color-scale-9 {
+  fill: #880e4f; /* Very dark purple */
+}
+.space-theme .color-scale-10 {
+  fill: #6a1b9a; /* Deepest purple */
+}
+
+
 /* Tooltip styling */
 .react-calendar-heatmap-tooltip {
   background-color: #000;
@@ -63,16 +204,17 @@
 
 /* Stats container styling */
 .heatmap-stats-container {
-  background-color: #f5f5f5; /* Light background for contrast */
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent for light themes */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for a 3D effect */
   padding: 20px;
   margin-left: 30px;
   width: 200px;
+  transition: background-color 0.3s ease;
 }
 
 .heatmap-stats {
-  font-size: 14px;
+  font-size: 24px;
   line-height: 1.8;
   color: hsl(200, 80%, 25%); /* Darker blue text for readability */
   text-align: left;
@@ -88,6 +230,23 @@
 
 .heatmap-stats p {
   margin: 5px 0;
+}
+
+/* Dark Theme Styling */
+body[data-theme='dark'] .heatmap-stats-container,
+body[data-theme='space'] .heatmap-stats-container {
+  background-color: rgba(18, 18, 18, 0.8); /* Semi-transparent dark background for dark/space themes */
+  color: #ffffff;
+}
+
+body[data-theme='dark'] .heatmap-stats h3,
+body[data-theme='space'] .heatmap-stats h3 {
+  color: #ffffff;
+}
+
+body[data-theme='dark'] .react-calendar-heatmap text,
+body[data-theme='space'] .react-calendar-heatmap text {
+  fill: #fff; /* Make labels white for dark themes */
 }
 
 /* Mobile view adjustments */

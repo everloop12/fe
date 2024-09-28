@@ -14,6 +14,9 @@ const Heatmap = () => {
     currentStreak: 0,
   });
 
+  // Get the theme from localStorage
+  const [theme] = useState(localStorage.getItem('theme') || 'default');
+
   const { data: answers, isSuccess } = useGetAnalyticsQuery(null, {
     refetchOnMountOrArgChange: true,
   });
@@ -85,8 +88,20 @@ const Heatmap = () => {
     }
   }, [answers, isSuccess]);
 
+  // Inline styles based on the theme
+  const textStyle = {
+    color: theme === 'dark' || theme === 'space' ? '#ffffff' : '#000000', // White text for dark themes
+  };
+
+  const containerStyle = {
+    backgroundColor: theme === 'dark' || theme === 'space' ? 'rgba(18, 18, 18, 0.8)' : 'rgba(255, 255, 255, 0.1)',
+    borderRadius: '10px',
+    padding: '20px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Maintain shadow for consistency
+  };
+
   return (
-    <div className="heatmap-container">
+    <div className={`heatmap-container ${theme}-theme`}> {/* Dynamically apply theme class */}
       <CalendarHeatmap
         startDate={moment().subtract(3, 'months').toDate()}
         endDate={moment().add(3, 'months').toDate()}
@@ -115,11 +130,14 @@ const Heatmap = () => {
         showMonthLabels={true}
         horizontal={true}
       />
-      <div className="heatmap-stats" style={{ textAlign: 'right', fontSize: '26px', marginTop: '20px' }}>
+      <div className="heatmap-stats" style={{ ...textStyle, marginTop: '20px' }}>
         <p style={{ marginBottom: '5px' }}>Daily Average Questions: {stats.average}</p>
         <p style={{ marginBottom: '5px' }}>Days Learned: {stats.learnedDays} days</p>
         <p style={{ marginBottom: '5px' }}>Longest Streak: {stats.longestStreak} days</p>
         <p style={{ marginBottom: '5px' }}>Current Streak: {stats.currentStreak} days</p>
+      </div>
+      <div style={containerStyle}>
+        <p style={textStyle}></p>
       </div>
     </div>
   );
