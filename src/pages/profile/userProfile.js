@@ -25,12 +25,12 @@ const availableIcons = [
   { label: 'Hematologist', file: 'Hematology Icon Trial.svg' },
   { label: 'Nephrologist', file: 'Nephrology Icon Trial.svg' },
   { label: 'Neurologist', file: 'Neurology Icon Trial.svg' },
-  { label: 'Orthopedist', file: 'Orthopedics Icon Trial.svg' },
+  { label: 'Orthopedic Surgeon', file: 'Orthopedics Icon Trial.svg' },
   { label: 'Pediatrician', file: 'Pediatrics Icon Trial.svg' },
   { label: 'Pulmonologist', file: 'Respiratory Icon Trial.svg' },
   { label: 'Rheumatologist', file: 'Rheumatology Icon Trial.svg' },
   { label: 'Surgeon', file: 'Surgery Icon Trial.svg' },
-  { label: 'Women Specialist', file: 'Women Icon Trial.svg' }
+  { label: 'OBGYN', file: 'Women Icon Trial.svg' }
 ];
 
 // ============================|| USER PROFILE PAGE ||============================ //
